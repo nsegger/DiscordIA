@@ -1,8 +1,9 @@
 import discord
 from discord.ext import commands
-from config import amoedoURL
 import base64
 import requests
+
+amoedoURL = "http://amoedo-generator.herokuapp.com/generate"
 
 class Amoedo(commands.Cog):
     def __init__(self, client):
