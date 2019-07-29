@@ -1,7 +1,7 @@
 import discord
 from discord.ext import commands
 from io import BytesIO
-import base64
+from base64 import b64decode
 from amoedogen.Generator import Generator
 import requests
 
@@ -15,7 +15,7 @@ class Amoedo(commands.Cog):
         gen = Generator()
         gen.write(text, color="blue", rect=True, base_64=True)
         img64 = gen.result
-        await ctx.send(file=discord.File(base64.decodestring(img64), f"a{ctx.author}.jpeg"))
+        await ctx.send(file=discord.File(BytesIO(b64decode(img64)), f"a{ctx.author}.jpeg"))
 
 def setup(client):
     client.add_cog(Amoedo(client))
