@@ -15,7 +15,7 @@ class Amoedo(commands.Cog):
         gen.write(text, color="blue", rect=True, base_64=True)
         img64 = gen.result
         
-        await ctx.send(file=discord.File(BytesIO(img64)))
+        await ctx.send(discord.File(BytesIO(img64)), f"a{ctx.author}.jpeg")
 
 def setup(client):
     client.add_cog(Amoedo(client))
