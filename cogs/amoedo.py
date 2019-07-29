@@ -22,6 +22,7 @@ class Amoedo(commands.Cog):
         text = f'{member.nick} {text}'
         img64 = self.__genAmoedo(text)
         await ctx.send(file=discord.File(BytesIO(b64decode(img64)), f"a{ctx.author}.jpeg"))
+    @commands.command()
     async def pera(self, ctx):
         text = "Pera,\no homem mais forte\ndo universo"
         img64 = self.__genAmoedo(text)
