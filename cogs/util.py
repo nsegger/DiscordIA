@@ -26,7 +26,7 @@ class Util(commands.Cog):
         await ctx.channel.purge(limit=amount+1)
 
     # Tasks decorator
-    @tasks.loop(hours=1)
+    @tasks.loop(seconds=3)
     async def updateActivity(self):
         await self.client.change_presence(activity=discord.Game(next(status)))
 
