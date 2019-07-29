@@ -14,8 +14,7 @@ class Amoedo(commands.Cog):
         gen = Generator()
         gen.write(text, color="blue", rect=True, base_64=True)
         img64 = gen.result
-        await self.client.send_file(ctx.channel, BytesIO(img64))
-
+        await ctx.send(file=BytesIO(img64))
 
 def setup(client):
     client.add_cog(Amoedo(client))
