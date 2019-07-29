@@ -9,8 +9,8 @@ from io import BytesIO
 
 class Generator():
     def __init__(self):
-        self.img = Image.open("assets/images/1.jpeg")
-        self.font = ImageFont.truetype("assets/fonts/Montserrat-Bold.ttf", 60)
+        self.img = Image.open("./assets/images/1.jpeg")
+        self.font = ImageFont.truetype("./assets/fonts/Montserrat-Bold.ttf", 60)
         self.draw = ImageDraw.Draw(self.img)
         self.image_name = str(datetime.now().time()).replace(
             ".", "").replace(":", "")
@@ -22,8 +22,8 @@ class Generator():
         except OSError:
             pass
 
-        self.quotes = Image.open("assets/images/quotes.png")
-        logo = Image.open("assets/images/logo.png")
+        self.quotes = Image.open("./assets/images/quotes.png")
+        logo = Image.open("./assets/images/logo.png")
         w, h = self.get_img().size
         self.img.paste(logo, (int(w / 2) - 120, h - 170))
         self.credits()
@@ -104,7 +104,7 @@ class Generator():
         w, h = self.get_img().size
         original_font = self.get_font()
         self.set_font(ImageFont.truetype(
-            "assets/fonts/Montserrat-Bold.ttf", 20))
+            "./assets/fonts/Montserrat-Bold.ttf", 20))
         self.set_last_position((w - 290, h - 35))
         self.write("margato.github.io/amoedo", rect=False)
         self.set_last_position(None)
