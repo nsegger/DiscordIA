@@ -88,9 +88,9 @@ class Generator():
                        (255, 255, 255), font=self.get_font())
         if (self.lines == 1):
             self.img.paste(self.quotes, (15, int(h / 2) - 25), self.quotes)
-        if not base_64:
-            self.get_img().save("outputs/" + self.get_img_name() + ".png")
-        else:
+        #if not base_64:
+        #    self.get_img().save("outputs/" + self.get_img_name() + ".png")
+        #else:
             buffered = BytesIO()
             self.get_img().save(buffered, format="JPEG")
             self.result = base64.b64encode(buffered.getvalue())
