@@ -1,6 +1,3 @@
-# Project files to ignore
-config.json
-
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
