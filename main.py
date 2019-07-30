@@ -1,34 +1,27 @@
 import discord
 from discord.ext import commands
 import os
-import config
+import json
+from settings import Config
 
 client = commands.Bot(command_prefix=".")
-path = config.path
+path = Config.bot["path"]
+token = Config.bot["token"]
+
 
 # Cogs management commands
 @client.command()
 @commands.has_permissions(administrator=True)
 async def reload(ctx, ext):
-    if ext is None:
-        await ctx.send("Você esqueceu do parametro 'extensão'!")
-    else:
-        client.reload_extension(f'cogs.{ext}')
+        client.reload_extension(f'{path}.{ext}')
 @client.command()
 @commands.has_permissions(administrator=True)
 async def unload(ctx, ext):
-    if ext is None:
-        await ctx.send("Você esqueceu do parametro 'extensão'!")
-    else:
-        client.unload_extension(f'cogs.{ext}')
+        client.unload_extension(f'{path}.{ext}')
 @client.command()
 @commands.has_permissions(administrator=True)
 async def load(ctx, ext):
-    if ext is None:
-        await ctx.send("Você esqueceu do parametro 'extensão'!")
-    else:
-        client.load_extension(f'cogs.{ext}')
-
+        client.load_extension(f'{path}.{ext}')
 
 # Load cogs automatically
 if os.path.exists(path):
@@ -37,4 +30,4 @@ if os.path.exists(path):
             client.load_extension(f'{path}.{filename[:-3]}')
 
 # Start client with token
-client.run(config.token)
+client.run(token)
