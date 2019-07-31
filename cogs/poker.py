@@ -74,7 +74,7 @@ class Poker(commands.Cog):
                 for player in self.tables[sID]["players"]:
                     self.tables[sID]["turn"] = player
                     await self.waitPlayerMove(sID)
-                    await sleep(0.5)    # we have to sleep so the task is properly stopped.
+                    await sleep(2)    # we have to sleep so the task is properly stopped.
             else:
                 # Turn and river (i = 4, 6)
                 print("Turn/river")
