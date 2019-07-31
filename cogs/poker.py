@@ -74,7 +74,7 @@ class Poker(commands.Cog):
                 for player in self.tables[sID]["players"]:
                     self.tables[sID]["turn"] = player
                     await self.waitPlayerMove(sID)
-                    await sleep(2)    # we have to sleep so the task is properly stopped.
+                    await sleep(0.5)    # we have to sleep so the task is properly stopped.
             else:
                 # Turn and river (i = 4, 6)
                 print("Turn/river")
@@ -90,7 +90,7 @@ class Poker(commands.Cog):
 
                 comCardsMsg = await pokerCh.send(embed=embed)
                 await comCardsMsg.add_reaction(u"\U0001F346")
-                    
+
                 self.comMsgs[sID] = comCardsMsg.id
 
             
