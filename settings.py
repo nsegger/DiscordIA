@@ -21,7 +21,7 @@ class Settings:
         if str(sID) in self.servers:
             print(f"Server {sID} already configured.")
         else:
-            self.servers[str(sID)] = {"logs": ch.id, "welcome": ch.id, "amsht": ch.id}
+            self.servers[str(sID)] = {"logs": ch.id, "welcome": ch.id, "amsht": ch.id, "poker":ch.id}
             await ch.send("***```Configure o canal de log, de boas vindas, e mais, utilizando .config```***")
 
 

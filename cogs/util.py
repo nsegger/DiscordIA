@@ -36,7 +36,7 @@ class Util(commands.Cog):
     async def config(self, ctx, option, chName):
         guild = ctx.guild
         channels = guild.text_channels
-        options = ["logs", "welcome", "amsht"]
+        options = ["logs", "welcome", "amsht", "poker"]
         if option in options:
             for channel in channels:
                 if channel.name == chName:
