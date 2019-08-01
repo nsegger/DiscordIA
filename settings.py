@@ -2,7 +2,7 @@ import json
 
 class Settings:
     def __init__(self):
-        with open('config.json') as cfg_file:
+        with open('storage/config.json') as cfg_file:
             self.cfg = json.load(cfg_file)
             cfg_file.close()
         self.bot = self.cfg["bot"]
@@ -14,7 +14,7 @@ class Settings:
 
     def saveCfg(self):
         self.__updateSelf()
-        with open('config.json', 'w') as cfg_file:
+        with open('storage/config.json', 'w') as cfg_file:
             json.dump(self.cfg, cfg_file, indent=4, ensure_ascii=False)
 
     async def cfgServerCreate(self, sID, ch):

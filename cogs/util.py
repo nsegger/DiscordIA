@@ -3,6 +3,7 @@ from discord.ext import commands, tasks
 import json
 from itertools import cycle
 from settings import Config
+from data import Userdata
 
 class Util(commands.Cog):
     def __init__(self, client):
@@ -20,6 +21,13 @@ class Util(commands.Cog):
         for guild in self.client.guilds:
             channel = guild.text_channels[0]
             await Config.cfgServerCreate(guild.id, channel)
+
+    @commands.Cog.listener()
+    async def on_message(self, message):
+        if not message.author.id in Userdata.data:
+            Userdata.data[message.author.id].chips = 0
+            Userdata.data[message.author.id].no = 1000
+
 
     # Commands decorator
     @commands.command()

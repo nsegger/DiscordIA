@@ -5,8 +5,19 @@ from asyncio import sleep
 from random import shuffle, randrange
 from itertools import cycle
 from settings import Config
+from data import Userdata as uData
 
-
+class Card:
+    def __init__(self, str):
+        self.value = str[0]
+        self.suit = str[1]
+        figs = ["J", "Q", "K", "A"]
+        if self.value in figs:
+            for i in range(len(figs)):
+                if self.value == figs[i]:
+                    self.value = i + 11
+        else:
+            self.value = int(self.value)
 
 class Poker(commands.Cog):
     def __init__(self, client):
@@ -18,7 +29,8 @@ class Poker(commands.Cog):
         self.tables = {}
         self.pms = {}
         self.comMsgs = {}
-        self.playerCards = {}
+        self.playerInfo = {}
+        self.asa = []
         self.msgT = 10
         self.roundT = 30
         
@@ -32,9 +44,8 @@ class Poker(commands.Cog):
                 # Dealing
                 print("Dealing")
                 for player in self.tables[sID]["players"]:
-                    cArray = [inplay.pop(randrange(len(inplay))), inplay.pop(randrange(len(inplay)))]
-                    self.playerCards[player.id] = cycle(cArray)
-                    playerCards = self.playerCards[player.id]
+                    self.playerInfo[player.id] = {[inplay.pop(randrange(len(inplay))), inplay.pop(randrange(len(inplay)))]}
+                    playerCards = cycle(self.playerInfo[player.id])
 
                     embed = discord.Embed(title="Suas cartas", description="Reaja para ver sua outra carta", colour=discord.Color.blue())
                     embed.set_author(name=self.client.user.name, icon_url=self.client.user.avatar_url)
@@ -63,7 +74,6 @@ class Poker(commands.Cog):
 
                 self.tables[sID]["comCards"] = cycle(self.tables[sID]["comCards"])
                 embed.set_image(url=self.cUrl[next(self.tables[sID]["comCards"])])
-
                 comCardsMsg = await pokerCh.send(embed=embed)
                 await comCardsMsg.add_reaction(u"\U0001F346")
                 
@@ -93,7 +103,82 @@ class Poker(commands.Cog):
 
                 self.comMsgs[sID] = comCardsMsg.id
 
+        for player in self.tables[sID]["players"]:
+            pCards = self.playerInfo[player.id]
+            pCards.extend(self.tables[sID]["listCc"])
+            pCards.sort(reverse=True)
+            pCards = [Card(cStr) for cStr in pCards]
+
+            cValues = {}
+            cSuits = {}
+            for card in pCards:
+                if not card.value in cValues.keys():
+                    cValues[card.value] = 1
+                else:
+                    cValues[card.value] += 1
+
+                if not card.suit in cSuits.keys():
+                    cSuits[card.suit] = 1
+                else:
+                    cSuits[card.suit] += 1
             
+
+            valCount = {}
+            for val in cValues.values():
+                if not val in valCount:
+                    valCount[val] = 1
+                else:
+                    valCount[val] += 1
+
+            suitsCount = {}
+            for suit in cSuits.values():
+                if not suit in suitsCount:
+                    suitsCount[suit] = 1
+                else:
+                    suitsCount[suit] += 1
+
+            valCount = list(valCount.keys())
+            valCount.sort(reverse=True)
+            #print(valCount)
+   
+
+            flush = self.checkFlush(cSuits)
+            straight, seq = self.checkStraight(valCount)
+            if straight and flush:
+                print("Straight flush")
+            elif straight:
+                print("Straight")
+            else:
+                print("Flush")
+
+
+
+
+            # Guardar cValues em playerInfo
+
+
+
+
+    def checkFlush(self, cSuits):
+        if len(list(cSuits.keys())) <= 3:
+            values = list(cSuits.values())
+            return any(x >= 5 for x in values)
+        else:
+            return False
+        
+    def checkStraight(self, valCount):
+        if len(valCount) >= 5:
+                #possible straight
+                iVals = iter(valCount[1:])
+                seq = []
+                for n in valCount[:-1]:
+                    current = next(iVals)
+                    if n - current == 1:
+                        seq.append(n)
+                        if len(seq) == 4:
+                            seq.append(current)
+                
+                return len(seq) >= 5, seq
 
 
     @commands.command()
@@ -148,7 +233,7 @@ class Poker(commands.Cog):
                     # Do I really need to do this for and check for user???
                     for server in self.tables:
                         if user in self.tables[server]["players"]:
-                            playerCards = self.playerCards[user.id]
+                            playerCards = cycle(self.playerInfo[user.id])
                             embed = discord.Embed(title="Suas cartas", description="Reaja para ver sua outra carta", colour=discord.Color.blue())
                             embed.set_author(name=self.client.user.name, icon_url=self.client.user.avatar_url)
                             embed.set_image(url=self.cUrl[next(playerCards)]) 
