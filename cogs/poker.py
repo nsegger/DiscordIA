@@ -223,9 +223,6 @@ class Poker(commands.Cog):
             pCards.sort(key=lambda card: card.value, reverse=True)
             cValues = {}
             cSuits = {}
-            
-            # Keep only the values so we can untie the game
-            #self.playerInfo[player.id]["cards"] = [c.value for c in pCards]
 
             for card in pCards:
                 if not card.value in cValues.keys():
@@ -372,7 +369,7 @@ class Poker(commands.Cog):
         else:
             await pokerCh.send(f"Ai pessoal, o {ctx.author.mention} tá querendo jogar poker sozinho! Alguém dá 10 de QI pra esse cara, por favor.")
 
-    # Mensagem que mostra o valor total do pot
+    # Total pot message
 
     @commands.command()
     async def check(self, ctx):
