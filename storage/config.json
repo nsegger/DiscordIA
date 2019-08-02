@@ -1,0 +1,120 @@
+{
+    "servers": {
+        "407332946966478848": {
+            "logs": 407332946966478850,
+            "welcome": 407332946966478850
+        },
+        "443930513141530635": {
+            "logs": 443934277684690940,
+            "welcome": 443934277684690940,
+            "amsht": 443931913514647550
+        },
+        "599738560483950662": {
+            "logs": 605510570858381400,
+            "welcome": 605494539167203300,
+            "amsht": 605466237698310100
+        },
+        "550962221673611265": {
+            "logs": 605569990187548672,
+            "welcome": 555832525461782549,
+            "amsht": 555831434330505236,
+            "poker": 556894230233219073
+        }
+    },
+    "bot": {
+        "path": "cogs",
+        "token": "NTYxMzAyMzAwMDE0OTM2MDc2.XUA9nQ.7jRWui4dal6_DaBRReCP_FyrxEg",
+        "status": [
+            "sua mãe na cama",
+            "ayyy lmao",
+            "seu pai eh nosso",
+            "não eh mole"
+        ],
+        "cards": {
+            "2": {
+                "C": "https://i.imgur.com/YE6Y0xi.png",
+                "D": "https://i.imgur.com/rlqtbq6.png",
+                "H": "https://i.imgur.com/E2I0mke.png",
+                "S": "https://i.imgur.com/PBP09Ou.png"
+            },
+            "3": {
+                "C": "https://i.imgur.com/W8bWQxL.png",
+                "D": "https://i.imgur.com/WZaFIo7.png",
+                "H": "https://i.imgur.com/HMaCf2g.png",
+                "S": "https://i.imgur.com/IVmxIZ3.png"
+            },
+            "4": {
+                "C": "https://i.imgur.com/QLtZdFQ.png",
+                "D": "https://i.imgur.com/bIxtsOR.png",
+                "H": "https://i.imgur.com/6InSYk8.png",
+                "S": "https://i.imgur.com/iMQE2j5.png"
+            },
+            "5": {
+                "C": "https://i.imgur.com/rkJb8py.png",
+                "D": "https://i.imgur.com/aluVr0k.png",
+                "H": "https://i.imgur.com/A2JLueg.png",
+                "S": "https://i.imgur.com/fsHq7dk.png"
+            },
+            "6": {
+                "C": "https://i.imgur.com/DNXUPS1.png",
+                "D": "https://i.imgur.com/xgHZDiG.png",
+                "H": "https://i.imgur.com/GUElC4n.png",
+                "S": "https://i.imgur.com/Tq3xaAE.png"
+            },
+            "7": {
+                "C": "https://i.imgur.com/umKAYfw.png",
+                "D": "https://i.imgur.com/EfFLsN5.png",
+                "H": "https://i.imgur.com/vMBUvTn.png",
+                "S": "https://i.imgur.com/JnyQ25e.png"
+            },
+            "8": {
+                "C": "https://i.imgur.com/BMNl6up.png",
+                "D": "https://i.imgur.com/TlPswHp.png",
+                "H": "https://i.imgur.com/TZmMuvY.png",
+                "S": "https://i.imgur.com/uYL3xba.png"
+            },
+            "9": {
+                "C": "https://i.imgur.com/hbtPGRO.png",
+                "D": "https://i.imgur.com/YvIKVwe.png",
+                "H": "https://i.imgur.com/b8cMp6V.png",
+                "S": "https://i.imgur.com/8Dh4D81.png"
+            },
+            "10": {
+                "C": "https://i.imgur.com/4t9tpHQ.png",
+                "D": "https://i.imgur.com/JMHzLnz.png",
+                "H": "https://i.imgur.com/NNDQWK1.png",
+                "S": "https://i.imgur.com/ktpnJNn.png"
+            },
+            "11": {
+                "C": "https://i.imgur.com/vavnltw.png",
+                "D": "https://i.imgur.com/a69jZih.png",
+                "H": "https://i.imgur.com/CQomEkc.png",
+                "S": "https://i.imgur.com/7DBmXyY.png"
+            },
+            "12": {
+                "C": "https://i.imgur.com/d5LHM36.png",
+                "D": "https://i.imgur.com/au5jk1d.png",
+                "H": "https://i.imgur.com/5B1jZLZ.png",
+                "S": "https://i.imgur.com/34CtenH.png"
+            },
+            "13": {
+                "C": "https://i.imgur.com/Ywfdxbo.png",
+                "D": "https://i.imgur.com/MaiasTy.png",
+                "H": "https://i.imgur.com/v5Ud3Wb.png",
+                "S": "https://i.imgur.com/khs4yiY.png"
+            },
+            "14": {
+                "C": "https://i.imgur.com/8y7L0rW.png",
+                "D": "https://i.imgur.com/F7cFzgO.png",
+                "H": "https://i.imgur.com/1xbTnpb.png",
+                "S": "https://i.imgur.com/lXNters.png"
+            }
+        },
+        "suits": {
+            "C": "Paus",
+            "D": "Ouros",
+            "H": "Copas",
+            "S": "Espadas"
+        }
+    }
+}

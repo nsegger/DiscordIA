@@ -8,6 +8,7 @@ client = commands.Bot(command_prefix=".")
 path = Config.bot["path"]
 token = Config.bot["token"]
 
+client.remove_command('help')
 
 # Cogs management commands
 @client.command()
